@@ -38,9 +38,7 @@
         <u-input
           v-model="userInfo.invitationCode"
           border="none"
-          :placeholder="`请输入邀请码${
-            needInvitationCodeRegister ? '(必填)' : '(选填)'
-          }`"
+          placeholder="请输入邀请码(选填)"
           clearable
         >
         </u-input>
@@ -99,26 +97,7 @@ export default {
       pageStatus: "normal",
     };
   },
-  computed: {
-    needInvitationCodeRegister() {
-      return this.$store.getters.storeAppConfig.needInvitationCodeRegister;
-    },
-  },
   methods: {
-    checkInvitationCodeState() {
-      if (this.needInvitationCodeRegister) {
-        this.rules.push({
-          invitationCode: [
-            {
-              type: "string",
-              required: true,
-              message: "请输入邀请码",
-              trigger: ["blur", "change"],
-            },
-          ],
-        });
-      }
-    },
     sendSms() {
       this.$refs.registerForm.validate().then((valid) => {
         const options = {
