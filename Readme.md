@@ -1,3 +1,4 @@
+<img src="https://github.com/OpenIMSDK/OpenIM-Docs/blob/main/docs/images/WechatIMG20.jpeg" alt="image" style="width: 350px; " />
 ## 安装依赖
 
 项目根目录命令行执行:
