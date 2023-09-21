@@ -42,11 +42,16 @@
 			this.$nextTick(() => plus.navigator.closeSplashscreen())
 		},
 		watch: {
-			storeIsSyncing(newVal) {
-				if(!newVal){
-					this.$nextTick(()=>this.$refs.paging.complete([...this.storeConversationList]));
-				}
-			}
+			storeIsSyncing: {
+				immediate: true,
+				handler(newVal) {
+						if (!newVal) {
+							this.$nextTick(() =>
+								this.queryList(1)
+							);
+						}
+					},
+				},
 		},
 		methods: {
 			async queryList(pageNo,pageSize){
