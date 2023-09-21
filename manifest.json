@@ -1,6 +1,6 @@
 {
     "name" : "OpenIM-Uniapp",
-    "appid" : "__UNI__60BFCE0",
+    "appid" : "__UNI__EEB133C",
     "description" : "",
     "versionName" : "2.0.0",
     "versionCode" : 200,
@@ -19,9 +19,7 @@
         "modules" : {
             "VideoPlayer" : {},
             "Camera" : {},
-            "Record" : {},
-            "Geolocation" : {},
-            "Maps" : {}
+            "Record" : {}
         },
         "distribute" : {
             "android" : {
@@ -66,19 +64,6 @@
             },
             "sdkConfigs" : {
                 "ad" : {},
-                "geolocation" : {
-                    "amap" : {
-                        "__platform__" : [ "ios", "android" ],
-                        "appkey_ios" : "1d8c5f83339e63301e8e333c99ae696c",
-                        "appkey_android" : "d7d4fede7d37b6dabf597824395cd1db"
-                    }
-                },
-                "maps" : {
-                    "amap" : {
-                        "appkey_ios" : "1d8c5f83339e63301e8e333c99ae696c",
-                        "appkey_android" : "d7d4fede7d37b6dabf597824395cd1db"
-                    }
-                },
                 "share" : {},
                 "statics" : {},
                 "speech" : {}
