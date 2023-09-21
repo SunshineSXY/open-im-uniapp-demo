@@ -139,14 +139,9 @@ export default {
   },
   methods: {
     init() {
-      if (process.env.NODE_ENV === "development") {
-        this.loginInfo.phoneNumber = "";
-        this.loginInfo.password = "";
-      } else {
         this.loginInfo.phoneNumber =
           uni.getStorageSync("lastPhoneNumber") || "";
         this.loginInfo.areaCode = uni.getStorageSync("lastAreaCode") || "86";
-      }
     },
     updateEye() {
       this.eying = !this.eying;

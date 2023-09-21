@@ -29,25 +29,23 @@ yarn
 - https+域名形式。若按照官方nginx方式配置。则仅需要修改下方域名为你自己的域名即可，后缀保留。
 
   ```javascript
-  registerUrl: 'https://web.rentsoft.cn/chat'
-  apiUrl: 'https://web.rentsoft.cn/api'
-  configUrl: 'https://web.rentsoft.cn/complete_admin'
-  wsUrl: 'wss://web.rentsoft.cn/msg_gateway'
+  const registerUrl = 'https://web.rentsoft.cn/chat'
+  const apiUrl = 'https://web.rentsoft.cn/api'
+  const wsUrl = 'wss://web.rentsoft.cn/msg_gateway'
   ```
 
 - http+IP+端口形式 仅需替换IP即可。**不必更换端口**
 
   ```javascript
-  registerUrl: 'http://121.5.182.23:10008'
-  apiUrl: 'http://121.5.182.23:10002'
-  configUrl: 'http://121.5.182.23:10009'
-  wsUrl: 'ws://121.5.182.23:10001'
+  const registerUrl = 'http://14.29.213.197:10008'
+  const apiUrl = 'http://14.29.213.197:10002'
+  const wsUrl = 'ws://14.29.213.197:10001'
   ```
 
 
 ## 云打包自定义调试基座
 
-> 推荐环境：Hbuilder X 3.6.5.20221121
+> 推荐环境：Hbuilder X 3.6.5+
 >
 > 由于demo是基于原生插件开发的，所以**仅支持 Android、iOS**运行。且根据uniapp官方文档，调试原生插件需要先打包自定义基座，在**自定义基座**上运行。
 
