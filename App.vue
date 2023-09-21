@@ -383,6 +383,21 @@ export default {
     },
 
     tryLogin() {
+      const initStore = () => {
+        this.$store.dispatch("user/getSelfInfo");
+        this.$store.dispatch("conversation/getConversationList");
+        this.$store.dispatch("conversation/getUnReadCount");
+        this.$store.dispatch("contact/getFriendList");
+        this.$store.dispatch("contact/getGrouplist");
+        this.$store.dispatch("contact/getBlacklist");
+        this.$store.dispatch("contact/getRecvFriendApplications");
+        this.$store.dispatch("contact/getSentFriendApplications");
+        this.$store.dispatch("contact/getRecvGroupApplications");
+        this.$store.dispatch("contact/getSentGroupApplications");
+        uni.switchTab({
+          url: "/pages/conversation/conversationList/index?isRedirect=true",
+        });
+      };
       getDbDir()
         .then(async (path) => {
           const flag = await IMSDK.asyncApi(IMMethods.InitSDK, IMSDK.uuid(), {
@@ -399,6 +414,15 @@ export default {
             uni.$u.toast("初始化IMSDK失败！");
             return;
           }
+          
+          const status = await IMSDK.asyncApi(
+            IMSDK.IMMethods.GetLoginStatus,
+            IMSDK.uuid(),
+          );
+          if (status === 3) {
+            initStore();
+            return;
+          }
 
           const IMToken = uni.getStorageSync("IMToken");
           const IMUserID = uni.getStorageSync("IMUserID");
@@ -407,21 +431,7 @@ export default {
               userID: IMUserID,
               token: IMToken,
             })
-              .then(() => {
-                this.$store.dispatch("user/getSelfInfo");
-                this.$store.dispatch("conversation/getConversationList");
-                this.$store.dispatch("conversation/getUnReadCount");
-                this.$store.dispatch("contact/getFriendList");
-                this.$store.dispatch("contact/getGrouplist");
-                this.$store.dispatch("contact/getBlacklist");
-                this.$store.dispatch("contact/getRecvFriendApplications");
-                this.$store.dispatch("contact/getSentFriendApplications");
-                this.$store.dispatch("contact/getRecvGroupApplications");
-                this.$store.dispatch("contact/getSentGroupApplications");
-                uni.switchTab({
-                  url: "/pages/conversation/conversationList/index?isRedirect=true",
-                });
-              })
+              .then(()=>initStore())
               .catch((err) => {
                 console.log(err);
                 uni.removeStorage({
